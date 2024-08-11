@@ -1,0 +1,47 @@
+﻿@using front.Models.ContentModels
+@using front.Models.CreateModels
+@model object
+
+@{
+    var modelType = Model.GetType();
+    var isEdit = ViewData["IsEdit"] as bool? ?? false;
+    var formAction = isEdit ? "Edit" : "Add";
+    var entityName = ViewData["EntityName"] as string ?? "Entity";
+}
+
+<h2>@(isEdit ? "Редактировать" : "Добавить") @entityName</h2>
+
+<form asp-action="@formAction@entityName" method="post" class="mt-3">
+    @if (isEdit)
+    {
+        <input type="hidden" name="Id" value="@((int)modelType.GetProperty("Id")?.GetValue(Model))" />
+    }
+
+    @Html.AntiForgeryToken()
+
+    @foreach (var prop in modelType.GetProperties())
+    {
+        if (prop.Name != "Id")
+        {
+            <div class="form-group">
+                <label for="@prop.Name" class="control-label">@prop.Name</label>
+                <input type="text" class="form-control" id="@prop.Name" name="@prop.Name" value="@prop.GetValue(Model)" />
+                <span asp-validation-for="@prop.Name" class="text-danger"></span>
+            </div>
+        }
+    }
+
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">
+            @if (isEdit)
+            {
+                <text>Сохранить</text>
+            }
+            else
+            {
+                <text>Добавить</text>
+            }
+        </button>
+        <a asp-action="@entityName" class="btn btn-secondary ml-2">Отмена</a>
+    </div>
+</form>

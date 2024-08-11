@@ -1,0 +1,38 @@
+﻿@using front.Models.ContentModels
+@model IEnumerable<MainContentModel>
+
+@{
+    ViewData["Title"] = "Main Content";
+}
+
+<h2>Информация</h2>
+
+<p>
+    <a asp-action="AddMainContent" class="btn btn-success">Добавить информацию</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Заголовок</th>
+            <th>Текст</th>
+            <th>Действия</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.HeaderContent</td>
+                <td>@item.MenuButtonText</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="EditMainContent" asp-route-id="@item.Id" class="btn btn-primary">Редактировать</a>
+                    <form method="post" asp-controller="Admin" asp-action="DeleteMainContent" asp-route-id="@item.Id" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,19 @@
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>вход для администратора</h2>
+
+<form method="post" asp-action="Login">
+    <div class="form-group">
+        <label for="Username">Имя пользователя</label>
+        <input type="text" class="form-control" id="Username" name="Username" required />
+    </div>
+    <div class="form-group">
+        <label for="Password">Пароль</label>
+        <input type="text" class="form-control" id="Password" name="Password" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

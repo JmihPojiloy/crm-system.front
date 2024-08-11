@@ -1,0 +1,37 @@
+﻿@using front.Models.CreateModels
+@model LeadCreateModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">Добро пожаловать на наш сайт!</h1>
+    <p class="lead">Здесь будет информация о проекте и призыв к действию.</p>
+</div>
+
+<div class="services">
+    <h2>Наши услуги</h2>
+    <p>Описание услуги 1</p>
+    <p>Описание услуги 2</p>
+    <p>Описание услуги 3</p>
+</div>
+
+<div class="lead-form">
+    <h2>Задайте вопрос</h2>
+    <form method="post" asp-action="CreateLead">
+        <div class="form-group">
+            <label for="ClientName">Имя</label>
+            <input type="text" class="form-control" id="ClientName" name="ClientName" required>
+        </div>
+        <div class="form-group">
+            <label for="ClientQuestion">Вопрос</label>
+            <textarea class="form-control" id="ClientQuestion" name="ClientQuestion" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Contact">Контакт</label>
+            <input type="text" class="form-control" id="Contact" name="Contact" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+</div>

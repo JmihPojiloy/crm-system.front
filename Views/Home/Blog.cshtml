@@ -1,0 +1,15 @@
+﻿@using front.Models.ContentModels
+@model List<BlogPostModel>
+@{
+    ViewData["Title"] = "BlogPost";
+}
+
+<h1>Блог</h1>
+@foreach(var post in Model)
+{
+    <div class="blog-post">
+        <h2>@post.Title</h2>
+        <p>@post.Content</p>
+        <a asp-action="BlogDetails" asp-route-id="@post.Id" class"btn btn-primary">Прочитать</a>
+    </div>
+}

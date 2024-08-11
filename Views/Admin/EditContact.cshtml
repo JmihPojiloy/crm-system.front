@@ -1,0 +1,10 @@
+﻿@using front.Models.ContentModels
+@model ContactInfoModel
+
+@{
+    ViewData["Title"] = "Edit Contact";
+}
+
+<h2>Редактировать контакт</h2>
+
+@await Html.PartialAsync("_EditForm", Model)

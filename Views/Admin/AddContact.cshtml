@@ -1,0 +1,10 @@
+﻿@using front.Models.CreateModels
+@model ContactInfoCreateModel
+
+@{
+    ViewData["Title"] = "Add Contact";
+}
+
+<h2>Добавить контакт</h2>
+
+@await Html.PartialAsync("_EditForm", Model)

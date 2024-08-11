@@ -1,0 +1,10 @@
+﻿@using front.Models.ContentModels
+@model ProjectModel
+@{
+    ViewData["Title"] = "Project Details";
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Description</p>
+<img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid" />
+<a asp-controller="Home" asp-action="Projects" class="btn btn-primary">Назад</a>

@@ -1,0 +1,27 @@
+﻿@using front.Models.ContentModels
+@model object
+
+@{
+    var modelType = Model.GetType();
+    var entityName = ViewData["EntityName"] as string ?? "Entity";
+}
+
+<h3>Вы уверены, что хотите удалить эту запись?</h3>
+<div>
+    @foreach (var prop in modelType.GetProperties())
+    {
+        if (prop.Name != "Id")
+        {
+            <div>
+                <strong>@prop.Name:</strong> @prop.GetValue(Model)
+            </div>
+        }
+    }
+</div>
+
+<form asp-action="Delete@entityName">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@((int)modelType.GetProperty("Id")?.GetValue(Model))" />
+    <button type="submit" class="btn btn-danger">Удалить</button>
+    <a asp-action="@entityName" class="btn btn-secondary">Отмена</a>
+</form>

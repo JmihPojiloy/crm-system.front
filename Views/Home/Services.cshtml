@@ -1,0 +1,15 @@
+﻿@using front.Models.ContentModels
+@model List<ServiceModel>
+@{
+    ViewData["Title"] = "Service";
+}
+
+<h1>Наши услуги</h1>
+
+@foreach (var service in Model)
+{
+    <div class="services">
+        <p>@service.Title</p>
+        <p>@service.Description</p>
+    </div>
+}

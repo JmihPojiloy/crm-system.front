@@ -1,0 +1,16 @@
+﻿@using front.Models.ContentModels
+@model List<ContactInfoModel>
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1>Контакты</h1>
+
+@foreach (var contact in Model)
+{
+    <div class="contacts">
+        <p>Телефон: @contact.Phone</p>
+        <p>Email: @contact.Email</p>
+        <p>Адрес: @contact.Address</p>
+    </div>
+}

@@ -1,0 +1,42 @@
+@using front.Enums
+@model LeadModel
+
+@{
+    ViewData["Title"] = "EditLead";
+}
+
+<h2>Редактирование заявки</h2>
+
+<form method="post" asp-action="EditLead">
+    <div class="form-group">
+        <label for="Id">ID</label>
+        <input type="text" class="form-control" id="Id" name="Id" value="@Model.Id" readonly />
+    </div>
+    <div class="form-group">
+        <label for="ClientName">Имя</label>
+        <input type="text" class="form-control" id="ClientName" name="ClientName" value="@Model.ClientName" required />
+    </div>
+    <div>
+        <label for="ClientQuestion">Вопрос</label>
+        <textarea class="form-control" id="ClientQuestion" name="ClientQuestion" required>@Model.ClientQuestion</textarea>
+    </div>
+    <div class="form-group">
+        <label for="Contact">Контакт</label>
+        <input type="text" class="form-control" id="Contact" name="Contact" value="@Model.Contact" required />
+    </div>
+    <div class="form-group">
+        <label for="Status">Статус</label>
+        <select class="form-control" id="Status" name="Status" asp-for="Status">
+            <option value="Recived">Received</option>
+            <option value="AtWork">AtWork</option>
+            <option value="Completed">Completed</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Canceled">Canceled</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Date">Дата</label>
+        <input type="text" class="form-control" id="Date" name="Date" value="@Model.Date.ToString("dd-MM-yyyy HH:mm")" readonly />
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

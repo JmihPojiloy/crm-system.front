@@ -1,0 +1,11 @@
+﻿@using front.Models.ContentModels
+@model BlogPostModel
+@{
+    ViewData["Title"] = "BlogPost Details";
+}
+
+<h1>@Model.Title</h1>
+<p>@Model.Content</p>
+<img src="@Model.ImageUrl" alt="@Model.Title" class="img-fluid" />
+<p><small>Опубликовано @Model.PublishDate.ToString("dd, MM, yyyy")</small></p>
+<a asp-controller="Home" asp-action="Blog" class="btn btn-primary">Назад</a>

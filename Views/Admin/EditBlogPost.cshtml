@@ -1,0 +1,10 @@
+﻿@using front.Models.ContentModels
+@model BlogPostModel
+
+@{
+    ViewData["Title"] = "Edit BlogPost Post";
+}
+
+<h2>Редактировать статью</h2>
+
+@await Html.PartialAsync("_EditForm", Model)
